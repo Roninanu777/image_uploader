@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-
+const imageRouter = require("./routes/imageRouter");
 const app = express();
 
 app.use(express.json());
@@ -14,6 +14,8 @@ mongoose
     useFindAndModify: true,
   })
   .then(() => console.log("MongoDB connected..."));
+
+app.use("/", imageRouter);
 
 const PORT = process.env.PORT || 5000;
 
